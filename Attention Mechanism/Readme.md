@@ -300,43 +300,6 @@ This is one reason why efficient and sparse attention mechanisms are an active a
 
 ---
 
-## 💻 Minimal PyTorch Example
-
-```python
-import torch
-import torch.nn.functional as F
-
-def attention(Q, K, V):
-    d_k = Q.size(-1)
-
-    scores = Q @ K.transpose(-2, -1)
-    scores = scores / (d_k ** 0.5)
-
-    weights = F.softmax(scores, dim=-1)
-
-    output = weights @ V
-
-    return output, weights
-```
-
-The implementation follows:
-
-```text
-Q × Kᵀ
-   ↓
-Scale
-   ↓
-Softmax
-   ↓
-Attention Weights
-   ↓
-Weights × V
-   ↓
-Output
-```
-
----
-
 ## 🌟 Real-World Applications
 
 Attention mechanisms are used in:
